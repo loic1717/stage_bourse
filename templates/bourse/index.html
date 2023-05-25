@@ -1,0 +1,38 @@
+{% extends 'bourse/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-12">
+        <form class="card card-sm">
+            <div class="card-body row no-gutters align-items-center">
+                <div class="col">
+                    <input type="search" placeholder="Entrez le nom de l'entreprise rechercher" name="item-name" class="form-control form-control-borderless">
+                </div>
+                <div class="col-auto">
+                    <button type="submit" class="btn btn-success">Recherche</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    {% for entreprise in entreprises.all %}
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-img-top">
+                {% if entreprise.image %}
+                    <img src="{{ entreprise.image.url }}" alt="" class="img-fluid">
+                {% else %}
+                    <h3>No image</h3>
+                {% endif %}
+            </div>
+            <div class="card-body">
+                <div id="id{{ entreprise.id_entreprise }}" class="card-title">{{ entreprise.nom }}</div>
+                <div id="nom{{ entreprise.nom }}" style="color:orange" class="card-text">{{ entreprise.nom }}</div>
+                <a href="{{ entreprise.id_entreprise}}" class="btn btn-warning">Voir</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}

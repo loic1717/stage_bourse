@@ -1,0 +1,30 @@
+{% extends 'bourse/base.html' %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-md-6">
+            <div>
+                <img src="{{ entreprise.image.url }}" alt="{{ entreprise.nom }}" class="img-fluid">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="text-warning display-3">
+                        {{ entreprise.nom }}
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div class="text-danger">
+                        {{ entreprise.symbole_boursier }}
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <div>
+                        {{ entreprise.description }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
