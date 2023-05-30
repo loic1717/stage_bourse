@@ -13,7 +13,7 @@ def index(request):
         # Filtrer les entreprises en fonction du nom (utilisation de 'nom__icontains' pour une recherche insensible à la casse)
         entreprises = entreprises.filter(nom__icontains=item_name)
 
-    # Préparer le contexte pour le rendu du template
+    # Préparer le contexte pour le rendu du template+
     context = {
         'entreprises': entreprises
     }
@@ -21,7 +21,7 @@ def index(request):
     # Rendre le template 'bourse/index.html' avec le contexte
 
     return render(request, 'bourse/index.html', context)
-    
+
 def description(request, myid):
     entreprise = Entreprise.objects.get(id_entreprise=myid)
     context = {

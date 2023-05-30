@@ -1,0 +1,43 @@
+/* Style du formulaire */
+form {
+    margin: 20px auto;
+    width: 300px;
+  }
+  
+  /* Style des champs de formulaire */
+  form input[type="text"],
+  form input[type="email"],
+  form input[type="password"],
+  form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  /* Style du bouton */
+  form button[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color: #337ab7;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  /* Style des erreurs de validation */
+  form .errorlist {
+    color: red;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+  
+  /* Style des messages de succès */
+  form .success-message {
+    color: green;
+    margin-top: 5px;
+    margin-bottom: 10px;
+  }
+  
