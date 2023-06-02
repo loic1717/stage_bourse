@@ -4,7 +4,7 @@ from django.urls import path, include
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include('bourse.urls')),
-    path('', include('user.urls')),
+    path('user', include('user.urls')),
     # Autres URLs de l'application principale
 ]
 

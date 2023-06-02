@@ -1,8 +1,10 @@
 from django.shortcuts import render, redirect
 from .forms import UtilisateurCreationForm
 from .models import UtilisateurModel
+#login,logout,authentificate sont fournie par Django
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
+
 def ajout_utilisateur(request):
     form = UtilisateurCreationForm()
     if request.method == 'POST':
@@ -18,7 +20,7 @@ def login_view(request):
         username = request.POST['username']
         password = request.POST['password']
         user = authenticate(request, username=username, password=password)
-        if user is not None:
+        if user is not None and user.is_active:
             login(request, user)
             return redirect('user/login.html')  # Redirige vers la page souhaitée après la connexion réussie
         else:

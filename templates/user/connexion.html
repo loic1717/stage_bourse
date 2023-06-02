@@ -1,10 +1,12 @@
+{% include "navbar.html" %}
+{% load static %}
+<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
 <!DOCTYPE html>
+
 <html>
-<head>
-    <title>Connexion</title>
-</head>
+
 <body>
-    <h2>Connexion</h2>
+
     {% if error_message %}
         <p>{{ error_message }}</p>
     {% endif %}
