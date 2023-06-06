@@ -12,7 +12,7 @@ def ajout_utilisateur(request):
         form = UtilisateurCreationForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('bourse/description.html')  # Remplacez "nom_de_l_url_de_redirection" par le nom de l'URL de redirection après l'ajout réussi de l'utilisateur
+            return redirect('user/login')  # Remplacez "nom_de_l_url_de_redirection" par le nom de l'URL de redirection après l'ajout réussi de l'utilisateur
     return render(request, 'user/ajout_utilisateur.html', {'form': form})
 
 
@@ -36,7 +36,7 @@ def login_view(request):
         user = authenticate(request, username=username, password=password)
         if user is not None and user.is_active:
             login(request, user)
-            return redirect('user/login.html')  # Redirige vers la page souhaitée après la connexion réussie
+            return redirect('/')  # Redirige vers la page souhaitée après la connexion réussie
         else:
             error_message = "Invalid username or password."
     else:
@@ -47,4 +47,4 @@ def login_view(request):
 
 def logout_view(request):
     logout(request)
-    return redirect('user/connexion.html')  # Redirige vers la page de connexion après la déconnexion réussie
+    return redirect('/')  # Redirige vers la page de connexion après la déconnexion réussie
