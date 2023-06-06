@@ -36,9 +36,11 @@
           <li class="nav-item">
             <a class="nav-link" href="/userlogin">connexion</a>
           </li>
-          {% comment %} <li class="nav-item">
+          {% if user.is_authenticated %}
+          <li class="nav-item">
             <a class="nav-link" href="/userlogout">déconnexion</a>
-          </li> {% endcomment %}
+          </li>
+          {% endif %}
           <li class="nav-item">
           <a class="nav-link disabled">Disabled</a>
         </li>

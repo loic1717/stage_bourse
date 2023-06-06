@@ -4,6 +4,7 @@ from .models import UtilisateurModel
 #login,logout,authentificate sont fournie par Django
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
+from django.contrib.auth.forms import UserCreationForm
 
 def ajout_utilisateur(request):
     form = UtilisateurCreationForm()
@@ -14,6 +15,19 @@ def ajout_utilisateur(request):
             return redirect('bourse/description.html')  # Remplacez "nom_de_l_url_de_redirection" par le nom de l'URL de redirection après l'ajout réussi de l'utilisateur
     return render(request, 'user/ajout_utilisateur.html', {'form': form})
 
+
+
+# def login_view(request):
+#     if request.method == 'POST':
+#         form = UtilisateurCreationForm(request.POST)
+#         if form.is_valid():
+#             user = form.save()
+#             login(request, user)
+#             return redirect('user/login.html')  # Redirige vers la page souhaitée après la connexion réussie
+#     else:
+#         form = UtilisateurCreationForm()
+
+#     return render(request, 'user/connexion.html', {'form': form})
 
 def login_view(request):
     if request.method == 'POST':
