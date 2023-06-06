@@ -24,6 +24,27 @@
                         {{ entreprise.description }}
                     </div>
                 </div>
+                <div class="col-md-12">
+                    <h3>Commentaires</h3>
+                    {% for commentaire in entreprise.commentaire_set.all %}
+                        <div>
+                            <strong>{{ commentaire.utilisateur.username }}:</strong> {{ commentaire.contenu }}
+                        </div>
+                    {% empty %}
+                        <div>Aucun commentaire pour le moment.</div>
+                    {% endfor %}
+                </div>
+                <div class="col-md-12">
+                    <h3>Ajouter un commentaire</h3>
+                    <form method="post" action="{% url 'ajouter_commentaire' entreprise_id=entreprise.pk %}">
+
+                        {% csrf_token %}
+                        <textarea name="contenu" rows="4" cols="50"></textarea>
+                        <br>
+                        <input type="submit" value="Ajouter">
+                    </form>
+                    
+                </div>
             </div>
         </div>
     </div>

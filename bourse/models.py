@@ -26,4 +26,12 @@ class Article(models.Model):
 class Associer(models.Model):
     entreprise = models.ForeignKey(Entreprise, on_delete=models.CASCADE)
     article = models.ForeignKey(Article, on_delete=models.CASCADE)
-   
+
+class Commentaire(models.Model):
+    entreprise = models.ForeignKey(Entreprise, on_delete=models.CASCADE)
+    utilisateur = models.ForeignKey(UtilisateurModel, on_delete=models.CASCADE)
+    contenu = models.TextField()
+    date_creation = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"Commentaire de {self.utilisateur.username} sur {self.entreprise.nom}"

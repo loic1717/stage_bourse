@@ -1,5 +1,5 @@
 from django.contrib import admin
-from bourse.models import Entreprise,Article,Associer
+from bourse.models import Entreprise,Article,Associer,Commentaire
 
 
  #Afficher dans la base de donnée en fesant une list_display et mettre se que l'on veut afficher qui se rouve dans le models
@@ -19,6 +19,11 @@ class AdminAssocier(admin.ModelAdmin):
         'entreprise','article'
     )
 
+class AdminCommmentaire(admin.ModelAdmin):
+    list_display = ('entreprise', 'utilisateur', 'contenu', 'date_creation')
+
+
 admin.site.register(Entreprise,AdminEntrprise)
 admin.site.register(Article,AdminArticle)
 admin.site.register(Associer,AdminAssocier)
+admin.site.register(Commentaire,AdminCommmentaire)
