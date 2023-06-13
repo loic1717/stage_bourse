@@ -1,0 +1,57 @@
+{% extends 'bourse/base.html' %}
+<!doctype html>
+<html lang="en">
+ 
+
+{% block content %}
+<body>
+    <div class="table-container">
+    <table class="table">
+        <thead class="table-light">
+            <tr>
+                <th>Date de publication</th>
+                <th>Titre</th>
+                <th>Entreprise</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for article in articles %}
+                <tr>
+                    <td>{{ article.date_publication }}</td>
+                    <td>{{ article.titre }}</td>
+                    <td>{{ article.associer.entreprise.nom }}</td>
+                    <td>
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'detail_actualite' article.id_article %}">{{ article.titre }}</a>
+                        {% else %}
+                            <a href="#contenuModal" data-bs-toggle="modal" data-bs-target="#contenuModal">{{ article.titre }}</a>
+                        {% endif %}
+                    </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="modal fade" id="contenuModal" tabindex="-1" role="dialog" aria-labelledby="contenuModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Connectez-vous ou créez un compte</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="lead text-xs-center">
+                        <a class="btn btn-success" href="{% url 'user:ajout_utilisateur' %}">Créer un compte</a>
+                        ou
+                        <a class="btn btn-success" href="{% url 'user:login' %}">Connexion</a>
+                    </div>
+                </div>
+            </div> 
+        </div>
+    </div>
+    
+{% endblock %}
+
+</body>
+</html>

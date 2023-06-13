@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/chemin/vers/ll_env/Scripts/python
 """Django's command-line utility for administrative tasks."""
 import os
 import sys

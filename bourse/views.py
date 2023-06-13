@@ -1,7 +1,7 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from .models import Entreprise,Commentaire
 from django.contrib.auth.decorators import login_required
-
+from .models import Article
 
 def index(request):
     # Récupérer toutes les entreprises
@@ -60,3 +60,14 @@ def ajouter_commentaire(request, entreprise_id):
     }
 
     return render(request, 'bourse/description.html', context)
+
+
+def actualites(request):
+    articles = Article.objects.filter(public=True).order_by('-date_publication')
+    # articles = Article.objects.select_related('associer__entreprise').all()
+    return render(request, 'bourse/actualites.html', {'articles': articles})
+
+
+def detail_actualite(request, article_id):
+    article = get_object_or_404(Article, pk=article_id)
+    return render(request, 'bourse/detail_actualite.html', {'article': article})

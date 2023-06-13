@@ -18,7 +18,7 @@ class Entreprise(models.Model):
 class Article(models.Model):
     id_article = models.AutoField(primary_key=True)
     titre = models.CharField(max_length=250)
-    contenu = models.CharField(max_length=250)
+    contenu = models.TextField()
     date_publication = models.DateField()
     public = models.BooleanField()
     def __str__(self):
